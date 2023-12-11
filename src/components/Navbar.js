@@ -8,17 +8,17 @@ function NavBar() {
     <header>
       <nav className="navbar">
         <ul>
-          <li>General</li>
           {!isLoggedIn ?
             <>
               <li> <Link to="/signup">Sign Up</Link> </li>
               <li> <Link to="login">Login</Link> </li>
+              <li>General</li>
             </>
            : 
            <>
-              <li> <Link onClick={logOutUser}>Logout</Link> </li>
               <li> <Link to="/events">Next Schedule</Link> </li>
               <li>Myself</li>
+              <li> <Link onClick={logOutUser}>Logout</Link> </li>
            </>
           }
         </ul>

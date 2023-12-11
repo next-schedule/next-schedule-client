@@ -11,7 +11,6 @@ function EventPage() {
       axios.get(`${API_URL}/api/events`, {headers: {Authorization: `Bearer ${storedToken}`}})
         .then(eventList => {
           setEvents(eventList.data)
-          console.log(eventList.data)
         })
         .catch(error => {
           console.log("error fetching events", error)
@@ -21,17 +20,19 @@ function EventPage() {
     fetchEvents();
   }, [])
 
-  // console.log(events.map(element => element.title))
-  
-  return(
+  return (
     <div>
-      {events.map(element =>
-        <div key={element._id}> 
-          <h1>{element.title}</h1>
-        </div>
-      ) }
+      {events.length > 0 ? (
+        events.map((element) => (
+          <div key={element._id}> 
+            <h1>{element.title}</h1>
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
-  );
+  );  
 };
 
 export default EventPage;
